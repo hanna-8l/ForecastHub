@@ -1,4 +1,6 @@
 window.onload=function(){
+    let forecastData;
+
     function refreshWeather (response){
         let temperatureElement = document.querySelector("#temperature");
         let temperature = response.data.temperature.current;
@@ -77,11 +79,11 @@ window.onload=function(){
                 <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
                 <div class="weather-forecast-temperatures">
                 <div class="weather-forecast-temperature">
-                    <strong>${Math.round(day.temperature.maximum)}º</strong>
+                    <strong>${Math.round(day.temperature.maximum)}ºC</strong>
                 </div>
                 <div class="weather-forecast-temperature">${Math.round(
                     day.temperature.minimum
-                )}º</div>
+                )}ºC</div>
                 </div>
             </div>
         `;
@@ -95,27 +97,51 @@ window.onload=function(){
     searchFormElement.addEventListener("submit", handleSearchSubmit);
 
     searchCity("Paris");
-
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const subscribeLink = document.getElementById("subscribe-link");
-    const subscribePopup = document.getElementById("subscribe-popup");
-    const closePopup = document.getElementById("close-popup");
+// document.addEventListener("DOMContentLoaded", function () {
+//     const subscribeLink = document.getElementById("subscribe-link");
+//     const subscribePopup = document.getElementById("subscribe-popup");
+//     const closePopup = document.getElementById("close-popup");
+//     const subscribeForm = document.getElementById("subscribe-form");
+//     const emailInput = document.getElementById("email");
+//     const successMessage = document.getElementById("success-message");
+    
+//         subscribeLink.addEventListener("click", function () {
+//             subscribePopup.style.display = "block";
+//             successMessage.style.display = "none";
+//         });
 
-    subscribeLink.addEventListener("click", function () {
-        subscribePopup.style.display = "block";
-    });
+//         closePopup.addEventListener("click", function () {
+//             subscribePopup.style.display = "none";
+//             successMessage.style.display = "none";
+//         });
 
-    closePopup.addEventListener("click", function () {
-        subscribePopup.style.display = "none";
-    });
+//         subscribeForm.addEventListener("submit", function (event) {
+//             event.preventDefault();
+//             const emailValue = emailInput.value;
 
-    const subscribeForm = document.getElementById("subscribe-form");
-    subscribeForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const emailInput = document.getElementById("email").value;
-        console.log("Email submitted:", emailInput);
-        subscribePopup.style.display = "none";
-    });
-});
+//             if (!isValidEmail(emailValue)) {
+//                 alert("Please enter a valid email address.");
+//                 return;
+//             }
+//             successMessage.style.display = "block";
+//             subscribeForm.reset();
+
+//             setTimeout(function () {
+//                 subscribePopup.style.display = "none";
+//             }, 3000);
+//         });
+//         function isValidEmail(email) {
+//             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//             return emailRegex.test(email);
+//         }
+//         // const subscribeForm = document.getElementById("subscribe-form");
+//         // subscribeForm.addEventListener("submit", function (event) {
+//         //     event.preventDefault();
+//         //     const emailInput = document.getElementById("email").value;
+//         //     console.log("Email submitted:", emailInput);
+//         //     subscribePopup.style.display = "none";
+//         // });
+    
+// });
